@@ -28,7 +28,9 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
 
     private var firstPlayer = ArrayList<Int>()
     private var secondPlayer = ArrayList<Int>()
-    private var score:  MutableList<Int> = mutableListOf(0,0)
+    private var score:  MutableList<Int> = mutableListOf(0)
+    private var score10:  MutableList<Int> = mutableListOf(0)
+
 
 
 
@@ -42,6 +44,8 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
         second = findViewById(R.id.second)
         first.text = player1
         second.text = player2
+        score1 = findViewById(R.id.score1)
+        score2 = findViewById(R.id.score2)
 
     }
 
@@ -99,8 +103,10 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
     }
     fun reset(){
         score.clear()
+        score10.clear()
         score1.text = ""
         score2.text = ""
+        ClearTable()
 
 
     }
@@ -217,18 +223,19 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
 
         if (winnerPlayer == 1) {
             ClearTable()
-            Toast.makeText(this, "X is winner", Toast.LENGTH_SHORT).show()
-            activePlayer == 1
-
+            score[0]++
+            score1.text = score[0].toString()
+            Toast.makeText(this, "${first.text} is winner", Toast.LENGTH_SHORT).show()
         } else if (winnerPlayer == 2) {
+            score10[0]++
+            score2.text = score10[0].toString()
             ClearTable()
-            Toast.makeText(this, "O is winner", Toast.LENGTH_SHORT).show()
-            activePlayer == 1
+            Toast.makeText(this, "${second.text} is winner", Toast.LENGTH_SHORT).show()
 
         }  else if  ((firstPlayer.size + secondPlayer.size == 9) && (winnerPlayer == 0)) {
             ClearTable()
-            Toast.makeText(this, "ფრე", Toast.LENGTH_LONG).show()
-            activePlayer == 1
+            Toast.makeText(this, "There is no winner", Toast.LENGTH_LONG).show()
+
 
         }
 
