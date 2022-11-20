@@ -21,13 +21,14 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
     private lateinit var reset: Button
     private lateinit var first: TextView
     private lateinit var second: TextView
+    private lateinit var score1: TextView
+    private lateinit var score2: TextView
 
     var activePlayer = 1
 
     private var firstPlayer = ArrayList<Int>()
     private var secondPlayer = ArrayList<Int>()
-
-
+    private var score:  MutableList<Int> = mutableListOf(0,0)
 
 
 
@@ -85,7 +86,7 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
                 R.id.button7 -> buttonNumber = 7
                 R.id.button8 -> buttonNumber = 8
                 R.id.button9 -> buttonNumber = 9
-                R.id.reset -> buttonNumber = 10
+                R.id.reset -> reset()
 
             }
 
@@ -94,6 +95,13 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
             }
 
         }
+
+    }
+    fun reset(){
+        score.clear()
+        score1.text = ""
+        score2.text = ""
+
 
     }
 
@@ -112,6 +120,45 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
 
         clickedView.isEnabled = false
         check()
+
+    }
+    fun buttonenable(){
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+        button7.isEnabled = true
+        button8.isEnabled = true
+        button9.isEnabled = true
+
+    }
+    fun ClearTable(){
+        button1.setBackgroundColor(Color.BLUE)
+        button1.text = ""
+        button2.setBackgroundColor(Color.BLUE)
+        button2.text = ""
+        button3.setBackgroundColor(Color.BLUE)
+        button3.text = ""
+        button4.setBackgroundColor(Color.BLUE)
+        button4.text = ""
+        button5.setBackgroundColor(Color.BLUE)
+        button5.text = ""
+        button6.setBackgroundColor(Color.BLUE)
+        button6.text = ""
+        button7.setBackgroundColor(Color.BLUE)
+        button7.text = ""
+        button8.setBackgroundColor(Color.BLUE)
+        button8.text = ""
+        button9.setBackgroundColor(Color.BLUE)
+        button9.text = ""
+        firstPlayer.clear()
+        secondPlayer.clear()
+        buttonenable()
+
+
+
 
     }
 
@@ -169,11 +216,20 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
         }
 
         if (winnerPlayer == 1) {
+            ClearTable()
             Toast.makeText(this, "X is winner", Toast.LENGTH_SHORT).show()
+            activePlayer == 1
+
         } else if (winnerPlayer == 2) {
+            ClearTable()
             Toast.makeText(this, "O is winner", Toast.LENGTH_SHORT).show()
+            activePlayer == 1
+
         }  else if  ((firstPlayer.size + secondPlayer.size == 9) && (winnerPlayer == 0)) {
+            ClearTable()
             Toast.makeText(this, "ფრე", Toast.LENGTH_LONG).show()
+            activePlayer == 1
+
         }
 
 
